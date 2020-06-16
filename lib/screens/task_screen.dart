@@ -1,12 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todoeyflutter/widgets/tasks_list.dart';
+import 'package:todoeyflutter/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen(),
+          );
+        },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
       ),
@@ -50,10 +59,12 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0,),
               decoration: BoxDecoration(
                 color:Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
               ),
+              child: TasksList(),
             ),
           ),
         ],
@@ -61,3 +72,6 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
+
